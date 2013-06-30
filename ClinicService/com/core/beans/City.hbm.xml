@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 30, 2013 12:00:24 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.core.beans.City" table="city" catalog="clinic">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="state" class="com.core.beans.State" fetch="select">
+            <column name="state_id" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="50" />
+        </property>
+        <set name="users" table="user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="city_id" />
+            </key>
+            <one-to-many class="com.core.beans.User" />
+        </set>
+        <set name="patients" table="patient" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="city_id" />
+            </key>
+            <one-to-many class="com.core.beans.Patient" />
+        </set>
+        <set name="clinics" table="clinic" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="city_id" />
+            </key>
+            <one-to-many class="com.core.beans.Clinic" />
+        </set>
+    </class>
+</hibernate-mapping>

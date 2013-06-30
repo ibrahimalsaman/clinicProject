@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 30, 2013 12:00:24 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.core.beans.Patient" table="patient" catalog="clinic">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="clinic" class="com.core.beans.Clinic" fetch="select">
+            <column name="clinic_id" />
+        </many-to-one>
+        <many-to-one name="city" class="com.core.beans.City" fetch="select">
+            <column name="city_id" />
+        </many-to-one>
+        <many-to-one name="job" class="com.core.beans.Job" fetch="select">
+            <column name="job_id" />
+        </many-to-one>
+        <property name="firstName" type="string">
+            <column name="first_name" length="50" />
+        </property>
+        <property name="secondName" type="string">
+            <column name="second_name" length="50" />
+        </property>
+        <property name="thirdName" type="string">
+            <column name="third_name" length="50" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="50" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="50" />
+        </property>
+        <property name="landPhone" type="string">
+            <column name="land_phone" length="50" />
+        </property>
+        <property name="mobilePhone" type="string">
+            <column name="mobile_phone" length="50" />
+        </property>
+        <property name="birthdate" type="date">
+            <column name="birthdate" length="10" />
+        </property>
+        <property name="website" type="string">
+            <column name="website" length="50" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" />
+        </property>
+        <property name="nationalNumber" type="string">
+            <column name="national_number" length="50" unique="true" />
+        </property>
+    </class>
+</hibernate-mapping>
